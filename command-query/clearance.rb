@@ -5,12 +5,14 @@ class Clearance
   end
 
   def best_deal
-    deal = @catalogue[0]
-    deal[0]
+    unless @catalogue.empty?
+      deal = @catalogue.sort_by { |item| item.find_deal}.first
+      deal.name
+    end
   end
 
-  def << (item)
-    @catalogue << item.to_a
+  def <<(item)
+    @catalogue << item
   end
 
 end
